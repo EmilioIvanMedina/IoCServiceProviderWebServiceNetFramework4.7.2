@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IoCWebServiceSampleServicesProject.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -20,7 +21,8 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
         [Route("api/CountryStatistics/Population/{id}")]
         public string Population(int id)
         {
-            return "655555";
+            var service = new StatisticsService();
+            return Convert.ToString(service.GetCountryPopulation(id));
         }
 
         // POST: api/CountryStatistics
