@@ -1,9 +1,9 @@
 ﻿using IoCServiceProviderWebServicePresentation.App_Start;
+using IoCServiceProviderWebServicePresentation.Controllers;
+using IoCWebServiceSampleServicesProject.Implementations;
+using IoCWebServiceSampleServicesProject.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -31,7 +31,8 @@ namespace IoCServiceProviderWebServicePresentation
 
         private void ConfigureServices(IServiceCollection services)
         {
-
+            services.AddScoped<ICountryService, CountryService>();
+            services.AddTransient<CountryStatisticsController>();
         }
     }
 }
