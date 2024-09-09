@@ -305,6 +305,12 @@
     <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.7.0.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IoCWebServiceSampleServicesProject\IoCWebServiceSampleServicesProject.csproj">
+      <Project>{26d95ead-e835-41fb-9bf8-c70d367bb4f7}</Project>
+      <Name>IoCWebServiceSampleServicesProject</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

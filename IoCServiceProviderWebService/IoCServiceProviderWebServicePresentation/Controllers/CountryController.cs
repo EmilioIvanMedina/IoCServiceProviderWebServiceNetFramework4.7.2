@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IoCWebServiceSampleServicesProject.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -18,7 +19,8 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
         // GET: api/Country/5
         public string Get(int id)
         {
-            return "BOLIVIA";
+            var service = new CountryService();
+            return service.GetCountryName(id);
         }
 
         // POST: api/Country
