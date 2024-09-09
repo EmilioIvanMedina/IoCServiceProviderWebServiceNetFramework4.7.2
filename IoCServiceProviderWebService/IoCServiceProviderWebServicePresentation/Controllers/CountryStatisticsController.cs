@@ -1,4 +1,5 @@
 ﻿using IoCWebServiceSampleServicesProject.Implementations;
+using IoCWebServiceSampleServicesProject.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
 {
     public class CountryStatisticsController : ApiController
     {
+        ICountryService _countryService;
+
+        public CountryStatisticsController(ICountryService countryService)
+        {
+            _countryService = countryService;
+        }
+
         // GET: api/CountryStatistics
         public IEnumerable<string> Get()
         {
@@ -21,7 +29,7 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
         [Route("api/CountryStatistics/Population/{id}")]
         public string Population(int id)
         {
-            var service = new StatisticsService();
+            var service = new StatisticsService(_countryService);
             return Convert.ToString(service.GetCountryPopulation(id));
         }
 
