@@ -11,11 +11,13 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
 {
     public class CountryStatisticsController : ApiController
     {
-        ICountryService _countryService;
+        private readonly ICountryService _countryService;
+        private readonly IStatisticsService _statisticsService;
 
-        public CountryStatisticsController(ICountryService countryService)
+        public CountryStatisticsController(ICountryService countryService, IStatisticsService statisticsService)
         {
             _countryService = countryService;
+            _statisticsService = statisticsService;
         }
 
         // GET: api/CountryStatistics
@@ -29,8 +31,7 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
         [Route("api/CountryStatistics/Population/{id}")]
         public string Population(int id)
         {
-            var service = new StatisticsService(_countryService);
-            return Convert.ToString(service.GetCountryPopulation(id));
+            return Convert.ToString(_statisticsService.GetCountryPopulation(id));
         }
 
         // POST: api/CountryStatistics

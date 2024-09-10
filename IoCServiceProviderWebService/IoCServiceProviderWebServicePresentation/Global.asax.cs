@@ -32,6 +32,8 @@ namespace IoCServiceProviderWebServicePresentation
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<ICountryService, CountryService>();
+            services.AddTransient<IStatisticsService, StatisticsService>();
+            services.AddTransient<CountryController>();
             services.AddTransient<CountryStatisticsController>();
         }
     }
