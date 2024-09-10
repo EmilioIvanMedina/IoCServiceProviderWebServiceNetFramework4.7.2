@@ -1,4 +1,5 @@
 ﻿using IoCWebServiceSampleServicesProject.Implementations;
+using IoCWebServiceSampleServicesProject.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,13 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
 {
     public class CountryController : ApiController
     {
+        private readonly ICountryService _countryService;
+
+        public CountryController(ICountryService countryService)
+        {
+            _countryService = countryService;
+        }
+
         // GET: api/Country
         public IEnumerable<string> Get()
         {
@@ -19,8 +27,7 @@ namespace IoCServiceProviderWebServicePresentation.Controllers
         // GET: api/Country/5
         public string Get(int id)
         {
-            var service = new CountryService();
-            return service.GetCountryName(id);
+            return _countryService.GetCountryName(id);
         }
 
         // POST: api/Country
